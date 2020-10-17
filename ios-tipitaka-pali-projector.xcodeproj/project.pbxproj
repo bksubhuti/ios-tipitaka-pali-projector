@@ -1,0 +1,587 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C3400ACF253AAA630000B7EA /* ios_tipitaka_pali_projectorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3400ACE253AAA630000B7EA /* ios_tipitaka_pali_projectorApp.swift */; };
+		C3400AD1253AAA630000B7EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3400AD0253AAA630000B7EA /* ContentView.swift */; };
+		C3400AD3253AAA670000B7EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3400AD2253AAA670000B7EA /* Assets.xcassets */; };
+		C3400AD6253AAA670000B7EA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3400AD5253AAA670000B7EA /* Preview Assets.xcassets */; };
+		C3400AE1253AAA670000B7EA /* ios_tipitaka_pali_projectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3400AE0253AAA670000B7EA /* ios_tipitaka_pali_projectorTests.swift */; };
+		C3400AEC253AAA670000B7EA /* ios_tipitaka_pali_projectorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3400AEB253AAA670000B7EA /* ios_tipitaka_pali_projectorUITests.swift */; };
+		C3400AFD253AAA840000B7EA /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3400AFC253AAA840000B7EA /* WebView.swift */; };
+		C3400B07253AAB020000B7EA /* tipitaka_projector_data in Resources */ = {isa = PBXBuildFile; fileRef = C3400B06253AAB010000B7EA /* tipitaka_projector_data */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C3400ADD253AAA670000B7EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3400AC3253AAA630000B7EA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C3400ACA253AAA630000B7EA;
+			remoteInfo = "ios-tipitaka-pali-projector";
+		};
+		C3400AE8253AAA670000B7EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3400AC3253AAA630000B7EA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C3400ACA253AAA630000B7EA;
+			remoteInfo = "ios-tipitaka-pali-projector";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C3400ACB253AAA630000B7EA /* ios-tipitaka-pali-projector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-tipitaka-pali-projector.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3400ACE253AAA630000B7EA /* ios_tipitaka_pali_projectorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_tipitaka_pali_projectorApp.swift; sourceTree = "<group>"; };
+		C3400AD0253AAA630000B7EA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C3400AD2253AAA670000B7EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C3400AD5253AAA670000B7EA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C3400AD7253AAA670000B7EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3400ADC253AAA670000B7EA /* ios-tipitaka-pali-projectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-tipitaka-pali-projectorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3400AE0253AAA670000B7EA /* ios_tipitaka_pali_projectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_tipitaka_pali_projectorTests.swift; sourceTree = "<group>"; };
+		C3400AE2253AAA670000B7EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3400AE7253AAA670000B7EA /* ios-tipitaka-pali-projectorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-tipitaka-pali-projectorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3400AEB253AAA670000B7EA /* ios_tipitaka_pali_projectorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_tipitaka_pali_projectorUITests.swift; sourceTree = "<group>"; };
+		C3400AED253AAA670000B7EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3400AFC253AAA840000B7EA /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		C3400B06253AAB010000B7EA /* tipitaka_projector_data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tipitaka_projector_data; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C3400AC8253AAA630000B7EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3400AD9253AAA670000B7EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3400AE4253AAA670000B7EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C3400AC2253AAA630000B7EA = {
+			isa = PBXGroup;
+			children = (
+				C3400ACD253AAA630000B7EA /* ios-tipitaka-pali-projector */,
+				C3400ADF253AAA670000B7EA /* ios-tipitaka-pali-projectorTests */,
+				C3400AEA253AAA670000B7EA /* ios-tipitaka-pali-projectorUITests */,
+				C3400ACC253AAA630000B7EA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C3400ACC253AAA630000B7EA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C3400ACB253AAA630000B7EA /* ios-tipitaka-pali-projector.app */,
+				C3400ADC253AAA670000B7EA /* ios-tipitaka-pali-projectorTests.xctest */,
+				C3400AE7253AAA670000B7EA /* ios-tipitaka-pali-projectorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C3400ACD253AAA630000B7EA /* ios-tipitaka-pali-projector */ = {
+			isa = PBXGroup;
+			children = (
+				C3400ACE253AAA630000B7EA /* ios_tipitaka_pali_projectorApp.swift */,
+				C3400AD0253AAA630000B7EA /* ContentView.swift */,
+				C3400AFC253AAA840000B7EA /* WebView.swift */,
+				C3400AD2253AAA670000B7EA /* Assets.xcassets */,
+				C3400AD7253AAA670000B7EA /* Info.plist */,
+				C3400B06253AAB010000B7EA /* tipitaka_projector_data */,
+				C3400AD4253AAA670000B7EA /* Preview Content */,
+			);
+			path = "ios-tipitaka-pali-projector";
+			sourceTree = "<group>";
+		};
+		C3400AD4253AAA670000B7EA /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C3400AD5253AAA670000B7EA /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C3400ADF253AAA670000B7EA /* ios-tipitaka-pali-projectorTests */ = {
+			isa = PBXGroup;
+			children = (
+				C3400AE0253AAA670000B7EA /* ios_tipitaka_pali_projectorTests.swift */,
+				C3400AE2253AAA670000B7EA /* Info.plist */,
+			);
+			path = "ios-tipitaka-pali-projectorTests";
+			sourceTree = "<group>";
+		};
+		C3400AEA253AAA670000B7EA /* ios-tipitaka-pali-projectorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C3400AEB253AAA670000B7EA /* ios_tipitaka_pali_projectorUITests.swift */,
+				C3400AED253AAA670000B7EA /* Info.plist */,
+			);
+			path = "ios-tipitaka-pali-projectorUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C3400ACA253AAA630000B7EA /* ios-tipitaka-pali-projector */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3400AF0253AAA670000B7EA /* Build configuration list for PBXNativeTarget "ios-tipitaka-pali-projector" */;
+			buildPhases = (
+				C3400AC7253AAA630000B7EA /* Sources */,
+				C3400AC8253AAA630000B7EA /* Frameworks */,
+				C3400AC9253AAA630000B7EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ios-tipitaka-pali-projector";
+			productName = "ios-tipitaka-pali-projector";
+			productReference = C3400ACB253AAA630000B7EA /* ios-tipitaka-pali-projector.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C3400ADB253AAA670000B7EA /* ios-tipitaka-pali-projectorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3400AF3253AAA670000B7EA /* Build configuration list for PBXNativeTarget "ios-tipitaka-pali-projectorTests" */;
+			buildPhases = (
+				C3400AD8253AAA670000B7EA /* Sources */,
+				C3400AD9253AAA670000B7EA /* Frameworks */,
+				C3400ADA253AAA670000B7EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C3400ADE253AAA670000B7EA /* PBXTargetDependency */,
+			);
+			name = "ios-tipitaka-pali-projectorTests";
+			productName = "ios-tipitaka-pali-projectorTests";
+			productReference = C3400ADC253AAA670000B7EA /* ios-tipitaka-pali-projectorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C3400AE6253AAA670000B7EA /* ios-tipitaka-pali-projectorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3400AF6253AAA670000B7EA /* Build configuration list for PBXNativeTarget "ios-tipitaka-pali-projectorUITests" */;
+			buildPhases = (
+				C3400AE3253AAA670000B7EA /* Sources */,
+				C3400AE4253AAA670000B7EA /* Frameworks */,
+				C3400AE5253AAA670000B7EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C3400AE9253AAA670000B7EA /* PBXTargetDependency */,
+			);
+			name = "ios-tipitaka-pali-projectorUITests";
+			productName = "ios-tipitaka-pali-projectorUITests";
+			productReference = C3400AE7253AAA670000B7EA /* ios-tipitaka-pali-projectorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C3400AC3253AAA630000B7EA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					C3400ACA253AAA630000B7EA = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
+					C3400ADB253AAA670000B7EA = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = C3400ACA253AAA630000B7EA;
+					};
+					C3400AE6253AAA670000B7EA = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = C3400ACA253AAA630000B7EA;
+					};
+				};
+			};
+			buildConfigurationList = C3400AC6253AAA630000B7EA /* Build configuration list for PBXProject "ios-tipitaka-pali-projector" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C3400AC2253AAA630000B7EA;
+			productRefGroup = C3400ACC253AAA630000B7EA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C3400ACA253AAA630000B7EA /* ios-tipitaka-pali-projector */,
+				C3400ADB253AAA670000B7EA /* ios-tipitaka-pali-projectorTests */,
+				C3400AE6253AAA670000B7EA /* ios-tipitaka-pali-projectorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C3400AC9253AAA630000B7EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3400AD6253AAA670000B7EA /* Preview Assets.xcassets in Resources */,
+				C3400B07253AAB020000B7EA /* tipitaka_projector_data in Resources */,
+				C3400AD3253AAA670000B7EA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3400ADA253AAA670000B7EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3400AE5253AAA670000B7EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C3400AC7253AAA630000B7EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3400AFD253AAA840000B7EA /* WebView.swift in Sources */,
+				C3400AD1253AAA630000B7EA /* ContentView.swift in Sources */,
+				C3400ACF253AAA630000B7EA /* ios_tipitaka_pali_projectorApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3400AD8253AAA670000B7EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3400AE1253AAA670000B7EA /* ios_tipitaka_pali_projectorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3400AE3253AAA670000B7EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3400AEC253AAA670000B7EA /* ios_tipitaka_pali_projectorUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C3400ADE253AAA670000B7EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C3400ACA253AAA630000B7EA /* ios-tipitaka-pali-projector */;
+			targetProxy = C3400ADD253AAA670000B7EA /* PBXContainerItemProxy */;
+		};
+		C3400AE9253AAA670000B7EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C3400ACA253AAA630000B7EA /* ios-tipitaka-pali-projector */;
+			targetProxy = C3400AE8253AAA670000B7EA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C3400AEE253AAA670000B7EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C3400AEF253AAA670000B7EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C3400AF1253AAA670000B7EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"ios-tipitaka-pali-projector/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "ios-tipitaka-pali-projector/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.paauk.tpp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C3400AF2253AAA670000B7EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"ios-tipitaka-pali-projector/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "ios-tipitaka-pali-projector/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.paauk.tpp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C3400AF4253AAA670000B7EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "ios-tipitaka-pali-projectorTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.paauk.tipitakapaliprojector.ios-tipitaka-pali-projectorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ios-tipitaka-pali-projector.app/ios-tipitaka-pali-projector";
+			};
+			name = Debug;
+		};
+		C3400AF5253AAA670000B7EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "ios-tipitaka-pali-projectorTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.paauk.tipitakapaliprojector.ios-tipitaka-pali-projectorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ios-tipitaka-pali-projector.app/ios-tipitaka-pali-projector";
+			};
+			name = Release;
+		};
+		C3400AF7253AAA670000B7EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "ios-tipitaka-pali-projectorUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.paauk.tipitakapaliprojector.ios-tipitaka-pali-projectorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "ios-tipitaka-pali-projector";
+			};
+			name = Debug;
+		};
+		C3400AF8253AAA670000B7EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "ios-tipitaka-pali-projectorUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.paauk.tipitakapaliprojector.ios-tipitaka-pali-projectorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "ios-tipitaka-pali-projector";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C3400AC6253AAA630000B7EA /* Build configuration list for PBXProject "ios-tipitaka-pali-projector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3400AEE253AAA670000B7EA /* Debug */,
+				C3400AEF253AAA670000B7EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3400AF0253AAA670000B7EA /* Build configuration list for PBXNativeTarget "ios-tipitaka-pali-projector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3400AF1253AAA670000B7EA /* Debug */,
+				C3400AF2253AAA670000B7EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3400AF3253AAA670000B7EA /* Build configuration list for PBXNativeTarget "ios-tipitaka-pali-projectorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3400AF4253AAA670000B7EA /* Debug */,
+				C3400AF5253AAA670000B7EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3400AF6253AAA670000B7EA /* Build configuration list for PBXNativeTarget "ios-tipitaka-pali-projectorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3400AF7253AAA670000B7EA /* Debug */,
+				C3400AF8253AAA670000B7EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C3400AC3253AAA630000B7EA /* Project object */;
+}
