@@ -656,3 +656,8 @@ body.show-page-numbers p.b1 span.font10 {
     text-overflow: ellipsis; 
     font-size:12pt;
   }
+
+.hide {
+    display: none;
+    visibility: hidden;
+}

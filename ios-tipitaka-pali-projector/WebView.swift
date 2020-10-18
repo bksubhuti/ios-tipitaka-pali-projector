@@ -2,8 +2,6 @@
 //  WebView.swift
 //  ios-tipitaka-pali-projector
 //
-//  Created by Arthur Damm on 10/16/20.
-//
 
 import Foundation
 import SwiftUI
