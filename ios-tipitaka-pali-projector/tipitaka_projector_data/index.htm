@@ -5,6 +5,11 @@
 
     <meta charset="utf-8">
 
+
+    <script>
+        var isMobile = true;
+    </script>
+
     <link rel="TIPITAKA PROJECTOR ICON" href="images/favico.ico"/>
     <link rel="stylesheet" type="text/css" href="js/index_style.css"/>
     <link rel="stylesheet" type="text/css" href="js/index_style2.css"/>
@@ -12,7 +17,6 @@
     <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.12.1/jquery-ui.css"/>
     <link rel="stylesheet" type="text/css" href="single.page.css"/>
     <link rel="stylesheet" type="text/css" href="js/farbtastic12/farbtastic/farbtastic.css"  />
-
 
     <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
@@ -333,6 +337,12 @@
         const setupHome = function setupHome() {
              console.log('window.onload');
              initDialogs();
+
+             if (isMobile){
+                doMobileAdjust();
+            }
+
+
 
              $('body').on('click', '#epub-selector .epub-books li', function() {
                  const fileName = this.dataset.fileName;
@@ -722,7 +732,7 @@
                     <img src='images/b_browse.png'>Anki Functions for selected words above 
                     <br>
 
-                    <div class="notselected grey-button hide" onClick="AnkiAdd()" title="Export to Anki File">
+                    <div class="notselected grey-button" onClick="AnkiAdd()" title="Export to Anki File">
                     <img src="images/Anki-icon.svg.png" width="35">
                     </div>
 
@@ -781,7 +791,7 @@
         height:24px;">
                 <img src="images/drag.png">
             </div>
-            <div id="ResizeDrag" style="display:none"><img src="images/resize.png" width="35"></div>
+            <div id="ResizeDrag"><img src="images/resize.png" width="35"></div>
         </div>
     </div>
 
@@ -1842,13 +1852,13 @@
                                                         <select name="view_right" id="view_right"
                                                                 onChange='ChooseSelect("view_right")'>
                                                             <option value="Space">None</option>
+                                                            <option value="Suttacentral">English Mode</option>
+                                                            <option value="MyNote">My Note</option>
                                                             <option value="Roman">Roman</option>
                                                             <option value="Myanmar">Myanmar</option>
                                                             <option value="Sinhala">Sinhala</option>
                                                             <option value="Thai">Thai</option>
                                                             <option value="Devanagari">Devanagari</option>
-                                                            <option value="MyNote">My Note</option>
-                                                            <option value="Suttacentral">English Mode</option>
                                                         </select>
                                                         <br><br>
                                                     </td>
@@ -1949,36 +1959,35 @@
                                     <td valign="top" width="46%" align="left">
                                         <strong style="color:#880000;">Disabled Pali Dictionaries</strong>
                                         <span id="DisableCount" style="font-size:12pt;color:gray;"></span>
-                                        <select style="width:100%;font-size:12pt;line-height:175%;border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px;-o-border-radius:8px;"
-                                                multiple name="DictionaryDisable" id="DictionaryDisable" size="10"
-                                                ondblclick="DictionaryMoveOption(document.form1.DictionaryDisable, document.form1.DictionaryEnable)"
-                                                onClick="toGetAbbr('0');">
-                                        </select>
+                                        <ul class="ping-pong-list" 
+                                            id="DictionaryDisable"
+                                            ondblclick="DictionaryMoveOption(true)">
+                                            
+                                        </ul>
                                     </td>
                                     <td valign="top" width="8%" align="center">
                                         <br>
-                                        <input type="button" value="Up" style="width:60pt;"
-                                               onclick="DictionaryChangePos(DictionaryEnable,-1)"/>
+                                        <input type="button" value="Up" style="width:100%;"
+                                               onclick="DictionaryChangePos(-1)"/>
                                         <br><br>
-                                        <input type="button" value="Down" style="width:60pt;"
-                                               onclick="DictionaryChangePos(DictionaryEnable,1)"/>
+                                        <input type="button" value="Down" style="width:100%;"
+                                               onclick="DictionaryChangePos(1)"/>
                                         <br><br>
 
-                                        <input type="button" value=">>" style="width:60pt;"
-                                               onclick="DictionaryMoveOption(document.form1.DictionaryDisable, document.form1.DictionaryEnable)"/>
+                                        <input type="button" value=">>" style="width:100%;"
+                                               onclick="DictionaryMoveOption(true)"/>
                                         <br><br>
-                                        <input type="button" value="<<" style="width:60pt;"
-                                               onclick="DictionaryMoveOption(document.form1.DictionaryEnable, document.form1.DictionaryDisable)"/>
+                                        <input type="button" value="<<" style="width:100%;"
+                                               onclick="DictionaryMoveOption(false)"/>
                                     </td>
                                     <td valign="top" width="46%" align="left">
 
                                         <strong style="color:#880000;">Enabled Pali Dictionaries</strong>
                                         <span id="EnableCount" style="font-size:12pt;color:gray;"></span>
-                                        <select style="width:100%;font-size:12pt;line-height:175%;border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px;-o-border-radius:8px;"
-                                                multiple name="DictionaryEnable" id="DictionaryEnable" size="10"
-                                                ondblclick="DictionaryMoveOption(document.form1.DictionaryEnable, document.form1.DictionaryDisable)"
-                                                onClick="toGetAbbr('1')">
-                                        </select>
+                                        <ul class="ping-pong-list" 
+                                            id="DictionaryEnable"
+                                            ondblclick="DictionaryMoveOption(false)">
+                                        </ul>
                                     </td>
                                 </tr>
                                 <tr>
@@ -2152,7 +2161,7 @@
                 <div id="SaveSettings" class="tabcontent" style="display:inline;">
                     <div style="margin-top:1%;line-height: 150%;padding:8px;background-color: #ccc; border: 2px solid #acacac;border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px;-o-border-radius:8px;">
                         <br>
-                        <button id="btnRestore" class="hide" onclick="RestorePreferences()"><img src="images/restorePref.png"
+                        <button id="btnRestore" onclick="RestorePreferences()"><img src="images/restorePref.png"
                                                                                     width="50" height="50"
                                                                                     border="0"><span
                                 style="font-size:20px;">Restore Prefs</span></button>
@@ -2163,7 +2172,7 @@
                                style="line-height: 150%;">
                             <tr>
                                 <td width="50%" valign="top" style="line-height: 150%;">
-                                    <button id="btnSave" class="hide" onclick="SavePreferences()"><img src="images/savePref.png"
+                                    <button id="btnSave" onclick="SavePreferences()"><img src="images/savePref.png"
                                                                                           width="50" height="50"
                                                                                           border="0"><span
                                             style="font-size:20px;">  Save Prefs</button>
@@ -2175,15 +2184,14 @@
                                             style="font-size:20px;">  Reset All</button>
                                     <br>
                                     <br>
-
-                                    <span class="hide">
+                                    <div id='savePrompt'>
                                     Step 1 :<br>
                                     &nbsp;&nbsp;Save "preference.txt"
                                     <br>
                                     Step 2 :<br>
                                     &nbsp;&nbsp;Copy this text file into<br>&nbsp;&nbsp;\tipitaka_projector_data\
-                                    <br><br>
-                                    </span>
+                                </div>
+                                <br><br>
                                 </td>
                                 <td width="50%" valign="top">
                                     <textarea name="preferences" id="preferences"
@@ -2626,7 +2634,6 @@
     }
                  
     
-
 </script>
 <script>if (window.module) module = window.module;</script>
 
