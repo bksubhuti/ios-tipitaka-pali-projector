@@ -739,15 +739,15 @@
                     <img src='images/b_browse.png'>Anki Functions for selected words above 
                     <br>
 
-                    <div class="notselected grey-button" onClick="AnkiAdd()" title="Export to Anki File">
+                    <div id="ankiAdd" class="notselected grey-button" onClick="AnkiAdd()" title="Export to Anki File">
                     <img src="images/Anki-icon.svg.png" width="35">
                     </div>
 
-                    <div class="notselected grey-button" onClick="AnkiCopy()" title="Copy Anki">
+                    <div id="ankiCopy" class="notselected grey-button" onClick="AnkiCopy()" title="Copy Anki">
                     <i class="material-icons">content_copy</i>
                     </div>
 
-                    <div class="notselected grey-button" onClick="AnkiClear()" title="Clear Anki">
+                    <div id="ankiClear" class="notselected grey-button" onClick="AnkiClear()" title="Clear Anki">
                     <i class="material-icons">delete</i>
                     </div>
                 </div>
@@ -2191,9 +2191,7 @@
                                             style="font-size:20px;">  Save Prefs</button>
                                     <br>
                                     <br>
-                                    <button id="btnReset" onclick="ResetPreferences()"><img src="images/reset2.png"
-                                                                                            width="50" height="50"
-                                                                                            border="0"><span
+                                    <button id="btnReset" onclick="ResetPreferences()"><span
                                             style="font-size:20px;">  Reset All</button>
                                     <br>
                                     <br>
