@@ -1272,5 +1272,6 @@ function doMobileAdjust(){
         $('#btnRestore').addClass('hide');
         $('#savePrompt').addClass('hide');
         $('#ResizeDrag').addClass('hide');
+        $('#ankiAdd').addClass('hide');
 
 }
