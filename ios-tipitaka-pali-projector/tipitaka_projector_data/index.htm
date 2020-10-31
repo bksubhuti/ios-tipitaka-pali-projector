@@ -4,6 +4,7 @@
     <title></title>
 
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=.75">
 
 
     <script>
@@ -365,6 +366,12 @@
 <div id="main_div">
 
     <header class="panel-header" id="panel-header">
+        <div id="btnHeaderDropUp" class="notselected grey-button" onClick="onHeaderDropUp()" title="Expand">
+            <i class="material-icons">arrow_drop_up</i>
+        </div>
+        <div id="btnHeaderDropDown" class="notselected grey-button" onClick="onHeaderDropDown()" title="Expand">
+            <i class="material-icons">arrow_drop_down</i>
+        </div>
         <img src="images/dhammacakka.svg" height="22" width="22"/>
         <span>Tipiṭaka  Pāḷi Projector</span>
     </header>
@@ -2041,14 +2048,20 @@
                                     <input name="contentposition" id="positionfloat" value="0" type="radio"
                                            onclick='ChooseRadio("positionfloat")'>
                                     <label for="positionfloat" onclick='ChooseRadio("positionfloat")'>Moveable</label>
-                                    <br><br>
+                                    <br>                                    
+                                    <br>
+                                                                        
+                                    <input type="color" id="panel_dict_bg_color" name="panel_dict_bg_color" onchange="onChangePanel_dict_bg_color()"
+                                        value="#FFFff5">
+                                        <label for="panel_dict_bg_color">Dictionary Shade</label>
+
                                 </td>
                                 <td width="50%">
                                 </td>
                             </tr>
 
                             <tr>
-                                <td width="50%" valign="top" style="visibility:hidden">
+                                <td width="50%" valign="top" style="visibility:visible">
                                     <strong style="color:#880000;">Panel Display</strong>
                                     <br>
                                     <input name="contentdisplay" id="displayalways" value="1" type="radio"
@@ -2494,6 +2507,8 @@
     };
 
     const onReady = () => {
+        $('#main_div').css('display', 'inline');
+
 
         var $fontColorInput = $('#panel_font_color');
         $.farbtastic('#picker').linkTo(function(color) {

@@ -521,6 +521,21 @@ function ChooseRange(key) {
         localStorage.setItem('contentfontcolorB', b);
     }
 }
+function onChangePanel_dict_bg_color(){
+
+    var panel_dict_bg_color = $('#panel_dict_bg_color').val();
+    var color = new RGBColor(panel_dict_bg_color);
+	panel_dict_bg_color = color.toRGB();
+	
+	panel_dict_bg_color = panel_dict_bg_color.replace(/rgb/, "rgba");
+	panel_dict_bg_color = panel_dict_bg_color.replace(")", " ,0.45");
+
+
+    localStorage.setItem('panel_dict_bg_color', panel_dict_bg_color);
+    $('.DictionaryClass').css('background-color', panel_dict_bg_color);
+
+
+}
 
 function SavePreferences() {
     def = [];
@@ -614,10 +629,20 @@ var setPanelBackgroundColorInput = function setPanelBackgroundColorInput() {
     $('#panel_bg_color').val(panel_bg_color);
     return panel_bg_color;
 }
+var setPanelDictBackgroundColorInput = function setPanelDictBackgroundColorInput (){
+    var panel_dict_bg_color = localStorage.getItem("panel_dict_bg_color");
+    $('#panel_dict_bg_color').val(panel_dict_bg_color);
+    return panel_bg_color;
+} 
 
 var updatePanelColors = function updatePanelColors(panel_bg_color, panel_font_color) {
     var panel_bg_color = setPanelBackgroundColorInput();
     var panel_font_color = setPanelFontColorInput();
+
+    // set the font color for the dictionary
+//    r1 = localStorage.getItem("r1");
+  //  $('.dict').css('color', r1);
+    //--- $('li').css('color', r1);
 
     $('#main_div').css('backgroundColor', panel_bg_color);
     $('#main_div').css('color', panel_font_color);
@@ -783,8 +808,12 @@ function initPreferences(){
     var contentdisplay = localStorage.getItem("contentdisplay");        // 0=onclick, 1=always
     if (contentposition == '0') {
         document.getElementById('positionfloat').checked = true;
+        $('#btnHeaderDropUp').show();
+        $('#btnHeaderDropDown').show();
     } else {
         document.getElementById('positionfixed').checked = true;
+        $('#btnHeaderDropUp').hide();
+        $('#btnHeaderDropDown').hide();
 
         contentdisplay = '1';
         document.write = localStorage.setItem("contentdisplay", '1');
@@ -834,10 +863,6 @@ function initPreferences(){
 
     ///  font stuff.. set the other active changes to panel
 
-    // set the font color for the dictionary
-    r1 = localStorage.getItem("r1");
-    $('.dict').css('color', r1);
-    // $('li').css('color', r1);
 
 
     lineheight = localStorage.getItem('contentlineheight');
@@ -864,10 +889,6 @@ function initPreferences(){
     //page3ResultStyle = page3ResultStyle + 'font-family:"' + fontname +'";';
 
 
-
-
-
-    // Panel FontColor
 
 
     // Panel Line height
@@ -1222,7 +1243,7 @@ function checkPrefsExist(){
     if ( isElectron() ){
 
         var rawFile = new XMLHttpRequest();
-        rawFile.open("GET", "preferences.txt", false);
+        rawFile.open("GET", "preferences.template", false);
         rawFile.onreadystatechange = function () {
             if (rawFile.readyState === 4) {
                 if (rawFile.status === 200 || rawFile.status == 0) {

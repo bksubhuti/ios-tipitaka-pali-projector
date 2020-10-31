@@ -13,6 +13,7 @@ function afterWordClicked(word, tdr1) {
 	if (word.length > 0) {
 		//lookupCoordinator(t, 0);	//$changecolor = $ns % 2; /
 		$('#main_div').css('display', 'inline');
+		onHeaderDropDown();
 
 		if (localStorage.getItem('main_content') == 'page1') {
 			DictionaryKeyGo();
@@ -71,6 +72,14 @@ function registerListeners() {
 		if ((localStorage.getItem('contentdisplay') == '0') && (localStorage.getItem('contentposition') == '0')) {
 			if ($('#main_div').css('display') == 'none') {
 				$('#main_div').css('display', 'inline');
+
+				// put code here to make top at zero
+				// and to be fure the bottom is less than total bottom.
+
+				
+
+
+
 			} else {
 				$('#main_div').css('display', 'none');
 			}
@@ -524,12 +533,10 @@ if (p == '0') {		// floating
 // 6. Background-Color
 $('#main_div').css('backgroundColor', localStorage.getItem('bg_color'));
 
+$('#main_div').css('display', 'inline');
+console.log("main_div show");
 
-if (localStorage.getItem('contentdisplay') == '0') {
-	$('#main_div').css('display', 'none');
-} else {
-	$('#main_div').css('display', 'inline');
-}
+
 
 
 var panel_bg_color  = localStorage.getItem('panel_bg_color');
