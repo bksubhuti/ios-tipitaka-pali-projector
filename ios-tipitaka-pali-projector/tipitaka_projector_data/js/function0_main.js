@@ -161,7 +161,6 @@ var html_no = _ary[0].slice(-4);
 
 M_LOC = [];
 M_SCT = [];		// sutta_center;
-DictionaryBackground = '';
 
 function GetTrId(val) {
 	val = Math.max(1, val);
@@ -400,3 +399,12 @@ if (SingleLoad) {
 loadInSequence(toLoad);
 
 
+
+
+function onHeaderDropUp(){
+	document.getElementById("main_div").style.visibility = "hidden";
+	document.getElementById("panel-header").style.visibility = "visible";
+}
+function onHeaderDropDown(){
+	document.getElementById("main_div").style.visibility = "visible";
+}
