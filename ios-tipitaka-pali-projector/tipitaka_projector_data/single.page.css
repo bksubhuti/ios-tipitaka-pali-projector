@@ -700,7 +700,7 @@ body.show-page-numbers p.b1 span.font10 {
     color: white;
 }
 
-.hide {
+.hideMe {
     display: none;
     visibility: hidden;
 }
@@ -709,3 +709,12 @@ body.show-page-numbers p.b1 span.font10 {
     transition: 0.3s;
     border-radius: 5px; /* 5px rounded corners */
   }
+
+ /* Landscape */
+    .ui-dialog-titlebar-close {
+        width: 100px !important;
+        height: 43px !important;
+        top: 23% !important;
+    }
+
+    .ui-dialog .ui-dialog-titlebar, .ui-dialog .ui-dialog-buttonpane { font-size: 1.25 em; }
