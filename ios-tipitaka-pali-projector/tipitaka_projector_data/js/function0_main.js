@@ -165,7 +165,7 @@ M_SCT = [];		// sutta_center;
 function GetTrId(val) {
 	val = Math.max(1, val);
 	document.write = localStorage.setItem('tr_id', val);
-	document.write = localStorage.setItem('LastHistory', html_no + '/' + val);
+	document.write = localStorage.setItem('LastHistory', html_no + val);
 
 	h = parseInt($('#main_div').css('height')) - Math.max(34, parseInt($('#main_div').css('top'))) + parseInt($('#main_content').css('offsetTop'));
 
@@ -402,9 +402,61 @@ loadInSequence(toLoad);
 
 
 function onHeaderDropUp(){
-	document.getElementById("main_div").style.visibility = "hidden";
-	document.getElementById("panel-header").style.visibility = "visible";
+	$("#main_div").css('visibility', "hidden");
+	$("#panel-header").css('visibility', "visible");
 }
+
+
 function onHeaderDropDown(){
-	document.getElementById("main_div").style.visibility = "visible";
+	$("#main_div").css('visibility', "visible");
+	$('.tabs').removeClass('hideMe');
+	$('.first-nav').removeClass('hideMe');
+	$('.dict').removeClass('hideMe');
+	$('.helpers').removeClass('hideMe');
+	$('#tab-content').css('margin-top', '');
+}
+
+function onHeaderDictionary(){
+	$("#main_div").css('visibility', "visible");
+	$('.tabs').addClass('hideMe');
+	$('.first-nav').addClass('hideMe');
+	$('.dict').addClass('hideMe');
+	$('.helpers').addClass('hideMe');
+	$('#tab-content').css("margin-top", "3px");
+	
+}
+
+function goConfirmGoToLatest(){
+
+	var strLastHistory = localStorage.getItem('LastHistory');
+
+	if (strLastHistory){
+
+		$.confirm({
+			title: 'Tpp',
+			content: 'Reload Session?',
+			boxWidth: '30%',
+			escapeKey: true,
+			escapeKey: 'cancel',
+			buttons: {
+				confirm: function () {
+					PaliHistoryGoUrl(strLastHistory);
+				},
+				cancel: function () {
+					;
+				}
+			}
+		});
+	}
+	/*
+
+
+		if (confirm('Would you like to restore your session?')) {
+			// Save it!
+			PaliHistoryGoUrl(strLastHistory);
+		} else {
+			// Do nothing!
+		}
+	}
+*/
 }
