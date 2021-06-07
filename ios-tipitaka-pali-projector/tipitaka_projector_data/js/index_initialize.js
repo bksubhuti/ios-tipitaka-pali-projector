@@ -1,4 +1,4 @@
-    //-----------------------
+    //----------------------- 
     // Left Right View
     //-----------------------
     // Left View
@@ -39,11 +39,11 @@
     }
 
     if (!localStorage.getItem("PromptConfirm")) {
-        document.write = localStorage.setItem("PromptConfirm", 'on');
+        document.write = localStorage.setItem("PromptConfirm", 'off');
     }
 
     if (!localStorage.getItem("AutoRestore")) {
-        document.write = localStorage.setItem("AutoRestore", 'off');
+        document.write = localStorage.setItem("AutoRestore", 'on');
     }
 
     // Dispaly Note
@@ -66,6 +66,7 @@
         'pe5':'PGD',
         'pe6':'PPN',
         'pe7':'PES',
+        'pe8':'PEU',
         'pg1':'PGeD',
         'pi1':'PInD',
         'pm1':'MmG',

@@ -109,33 +109,39 @@ function goUrl() {
 }
 
 function PaliHistoryList() {
-	var url = '';
-	var strLastHistory = localStorage.getItem('LastHistory');
-	if (strLastHistory) {
-		url += '<img src="images/reset.png" width="16">' 
-		url +='<a href="javascript:void(0); onClick="PaliHistoryGoUrl(\'' + strLastHistory + '\');"> Latest</a>';
-	} 
-	$('#LastHistory').html(url);	
+	if (isNaN(html_no) === false) {
+		var url = '';
+		var strLastHistory = localStorage.getItem('LastHistory');
+		if (strLastHistory) {
+			url += '<img src="images/reset.png" width="16">' 
+			url +='<a href="javascript:void(0);" onClick="PaliHistoryGoUrl(\'' + strLastHistory + '\');"> Latest</a>';
+		} 
+		$('#LastHistory').html(url);	
+	}
 
 	var PaliHistoryArray = [];
 	PaliHistoryArray = JSON.parse(localStorage.getItem('PaliHistoryJSON'));
+
 	if (PaliHistoryArray != null){// use JSON objects instead
 		var url = '';
 		url += '<br>';
 
-		for (i in PaliHistoryArray) {
+		for (const history of PaliHistoryArray) {
+			const bookDataInfo = bookData.flat[history.html_no];
+			if (!bookDataInfo) {
+				continue;
+			}
 			url += '<span style="white-space: pre;">';
-			url += '<input type="checkbox" id="PaliHist' + i + '" unchecked value="' + PaliHistoryArray[i].html_no + '"/>';
-			url += '<a href="javascript:void(0);" onClick="PaliHistoryGoUrl(\'' + PaliHistoryArray[i].html_no + "#" + PaliHistoryArray[i].paraNo +  '\');" title="' + T_Book[PaliHistoryArray[i].html_no] + '">' 
-			url += toTranslate(T_Book[PaliHistoryArray[i].html_no]); //pass html_no to get the title of book
-			url += '&nbsp;' +'/ '  + toTranslate(PaliHistoryArray[i].Toc_Name);
+			url += '<input type="checkbox" id="PaliHist' + i + '" unchecked value="' + history.html_no + '"/>';
+			url += '<a href="javascript:void(0);" onClick="PaliHistoryGoUrl(\'' + history.html_no + "#" + history.paraNo +  '\');" title="' + bookDataInfo.title + '">'
+			url += toTranslate(bookDataInfo.title); //pass html_no to get the title of book
+			url += '&nbsp;' +'/ '  + toTranslate(history.Toc_Name);
 			url += '&nbsp;#';
-			url += PaliHistoryArray[i].paraNo + '</a><br>';
+			url += history.paraNo + '</a><br>';
 			url += '</span>';
-		} 
+		}
 		$("#palihistory").html(url);
 	}
-
 }
 
 function PaliHistoryClear(type) {
@@ -184,7 +190,7 @@ function PaliHistoryCopy() {
             if (e == true){        
                 strHistory = strHistory + PaliHistoryArr[i].date + "\t";
                 strHistory = strHistory + PaliHistoryArr[i].html_no + "\t";
-                strHistory = strHistory + toTranslate(T_Book[PaliHistoryArr[i].html_no]) + "\t";
+                strHistory = strHistory + toTranslate(bookData.flat[PaliHistoryArr[i].html_no].title) + "\t";
                 strHistory = strHistory + PaliHistoryArr[i].paraNo + "\t";
                 strHistory = strHistory + PaliHistoryArr[i].Toc_Name + "\n";  
             }
@@ -613,7 +619,7 @@ var gDNJSON;
 ///////////  global variables
 
 $.ajax({
-	url: 'js/quickjump.json',
+	url: 'quickjump.json',
 	dataType: "text",
 	type: "GET",
 	mimeType: 'text/json; charset=utf-8',

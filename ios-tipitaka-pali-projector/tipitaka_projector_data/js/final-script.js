@@ -1,4 +1,4 @@
-function afterWordClicked(word, tdr1) {
+function afterWordClicked(word, tdr1) { 
 
 	if (latestElementClickedJqueryObject) {
 		$(latestElementClickedJqueryObject).removeClass("recentClickedCSSleft");
@@ -7,7 +7,9 @@ function afterWordClicked(word, tdr1) {
 	$(this).addClass("recentClickedCSSright");
 	latestElementClickedJqueryObject = $(tdr1);
 
-	GetTrId($(tdr1).attr('id').substring(1));
+	if ($(tdr1).attr('id') != undefined) {
+		GetTrId($(tdr1).attr('id').substring(1));
+	}
 
 	word_click(word);
 	if (word.length > 0) {
@@ -60,8 +62,14 @@ function afterWordClicked(word, tdr1) {
 function registerListeners() {
 
 	$(document.body).on('click', '.r1', function () {
-		// copy from stlooku_jquery.js designed by Ven. Paññindriya(Vietnam)
 
+		if (navigator.appCodeName == 'Mozilla') {
+			word_click();
+			if (t.length > 0) {
+				DictionaryKeyGo();
+				change_tab('page1'); 
+			}
+		}
 	});
 
 	$(document.body).on('click', '.m1', function () {
@@ -95,7 +103,7 @@ function registerListeners() {
 		}
 		if (localStorage.getItem('main_content') <= 'page3') {
 			word_click();
-			console.log(t);
+			
 			if (t.length > 0) {
 				DictionaryKeyGo();
 				change_tab('page1');
@@ -239,6 +247,10 @@ function setTableStyling() {
 	$(".b1").css("color", color);
 	$(".m1").css("color", color);
 	$(".bld").css("color", bold);
+
+	$("#IdMessage").css('color', color + ' !important');
+	$("#TmpDictionary").css('color', color + ' !important');
+
 	//$('#main_td2').css('backgroundColor', localStorage.getItem('bg_color'));
 	$('#main_table').css('background-color', localStorage.getItem('bg_color'));
 	//$('#main_td2').css('background-color', localStorage.getItem('bg_color'));
@@ -271,43 +283,192 @@ if (Sr_key) {
 }
 var Sr_id = localStorage.getItem('Sr_id'+ html_no);
 
-function  displayBook() {
+function  displayBook(inTableId) {
 	const viewLeftConfig = localStorage.getItem("view_left");
 	const viewRightConfig = localStorage.getItem("view_right");
 
 	// Clear MyNote
-    if (viewRightConfig != 'MyNote') { 
-    	M_LOC = [];	 
-    } else {//
+	is_Edit = false;
+	if ('English;SuttaCentral;Taiwan;Chinese;MyNote'.indexOf(localStorage.getItem('view_right')) == -1) {
+		M_LOC = [];
+		M_QUE = [];
+		M_FNOTE = [];
+		M_RANGE = [];
+		M_START = 1;
+	} else {//
+		is_Edit = true;
 	    var jMyNoteData = {TrId:"", val:""};
 		var MyNoteArray = [];
-		var strMyNotes = localStorage.getItem('MyNotes');
-		if (strMyNotes!= null){
-			MyNoteArray = JSON.parse(strMyNotes);  
+		var strMyNote = localStorage.getItem(viewRightConfig);
+		if (strMyNote!= null){
+			MyNoteArray = JSON.parse(strMyNote);  
 			if (MyNoteArray != null){// use JSON objects instead  
+				if (strMyNote.indexOf('"html_no":"' + html_no + '"') != -1) {
+					M_LOC = [];
+				}
 				for (i in MyNoteArray) { 
-					if (MyNoteArray[i].html_no === html_no){
-					M_LOC[MyNoteArray[i].TrId] = MyNoteArray[i].val;
+					if (MyNoteArray[i].html_no === html_no) {
+						M_LOC[MyNoteArray[i].TrId] = MyNoteArray[i].val;
 					} 
 				} 
 			}	
+		} else {
+			MyNoteArray = [];
+			strMyNote = 'null';
 		}
-		MyNoteArray = [];  
-    }
 
-    if (viewRightConfig != 'Suttacentral') { 
-    	M_SCT = [];	
-    } else {
-	    var jSuttaCentralData = {TrId:"", val:""};
-		var SuttaCentralArray = [];
-		SuttaCentralArray = JSON.parse(localStorage.getItem('SuttaCentral' + html_no));  
-		for (i in SuttaCentralArray) { 
-			M_SCT[SuttaCentralArray[i].TrId] = SuttaCentralArray[i].val;
+		if (strMyNote.indexOf('"html_no":"' + html_no + '"') == -1) {
+			console.log(M_LOC);
+			for (i in M_LOC) {
+				var jMyNoteData = {};
+				jMyNoteData.html_no = html_no;
+				jMyNoteData.TrId = i; 
+				jMyNoteData.val = M_LOC[i];
+				MyNoteArray.push(jMyNoteData); 
+			}
+
+			//put into localStorage
+			localStorage.setItem(viewRightConfig, JSON.stringify(MyNoteArray));
+		}
+		 
+
+		//***********************************************
+		//* Get M_QUE
+		//*
+		var import_data = '0';
+		var jMyNoteQueue = {Section:"", val:""};
+		var MyNoteQueueArray = [];
+		var strMyNoteQueue = localStorage.getItem(viewRightConfig + 'Queue');
+		if (strMyNoteQueue != null){
+			MyNoteQueueArray = JSON.parse(strMyNoteQueue);  
+			if (MyNoteQueueArray != null) {	// use JSON objects instead  
+				if (strMyNoteQueue.indexOf('"html_no":"' + html_no + '"') == -1) {
+					import_data = '1';
+				} else {
+					// found
+					//M_QUE = [];
+					for (i in MyNoteQueueArray) { 
+						if (MyNoteQueueArray[i].html_no === html_no){
+							M_QUE[MyNoteQueueArray[i].section] = MyNoteQueueArray[i].val;
+						} 
+					} 
+
+				}
+			} else {
+				import_data = '1';
+			}
+		} else {
+			import_data = '1';
+		}
+
+		if (import_data == '1') {
+			for (i in M_QUE) {
+				var jMyNoteQueue = {};
+				jMyNoteQueue.html_no = html_no;
+				jMyNoteQueue.section = i; 
+				jMyNoteQueue.val = M_QUE[i];
+				MyNoteQueueArray.push(jMyNoteQueue); 
+			}
+			//put into localStorage
+			localStorage.setItem(viewRightConfig + 'Queue', JSON.stringify(MyNoteQueueArray));
+		}
+
+		start = M_START;
+		
+		M_RANGE = [];
+		for (i in M_QUE) {
+			M_RANGE[i] = start;
+			start = parseInt(i) +1;
 		} 
-		SuttaCentralArray = [];
-	}
 
-	 
+		
+		s2 = '<table width="100%" style="font-size:9pt;" border="0">';
+			s2 += '<tr>';
+				s2 += '<td width="25%" onClick="MyNoteExec(\'AddRow\')" style="color:#880000;"><br>';
+					s2 += '<i class="material-icons">edit</i><br>Add row';
+				s2 += '</td>';
+				s2 += '<td width="25%" onClick="MyNoteExec(\'AddComment\')" style="color:green;"><br>';
+					s2 += '<i class="material-icons">comment</i><br>Add comment';
+				s2 += '</td>';
+				s2 += '<td width="25%" onClick="MyNoteExec(\'DeleteComment\')" style="color:green;"><br>';
+					s2 += '<i class="material-icons">delete</i><br>Del. comment';
+				s2 += '</td>';
+				s2 += '<td width="25%" onClick="MyNoteExec(\'Cancel\')" style="color:red;"><br>';
+					s2 += '<i class="material-icons">cancel</i><br>Cancel';
+				s2 += '</td>';
+			s2 += '</tr>';
+			s2 += '<tr>';
+				s2 += '<td onClick="MyNoteExec(\'SelectPrevious\')"><br>';
+					s2 += '<i class="material-icons">skip_previous</i><br>Select previous';
+				s2 += '</td>';
+				s2 += '<td onClick="MyNoteExec(\'SelectAll\')"><br>';
+					s2 += '<i class="material-icons">select_all</i><br>Select all';
+				s2 += '</td>';
+				s2 += '<td onClick="MyNoteExec(\'SelectNext\')"><br>';
+					s2 += '<i class="material-icons">skip_next</i><br>Select next';
+				s2 += '</td>';
+				s2 += '<td onClick="MyNoteExec(\'Save\')" style="color:red;"><br>';
+				s2 += '<i class="material-icons">save</i><br>Save';
+				s2 += '</td>';
+			s2 += '</tr>';
+			s2 += '<tr>';
+				s2 += '<td onClick="MyNoteExec(\'MoveUp\')"><br>';
+					s2 += '<i class="material-icons">publish</i><br>Move up';
+				s2 += '</td>';
+				s2 += '<td onClick="MyNoteExec(\'Merge\')"><br>';
+					s2 += '<i class="material-icons">vertical_align_center</i><br>Merge all';
+				s2 += '</td>';
+				s2 += '<td onClick="MyNoteExec(\'MoveDown\')"><br>';
+					s2 += '<i class="material-icons">get_app</i><br>Move down';
+				s2 += '</td>';
+				s2 += '<td onClick="MyNoteExec(\'DeleteRow\')"><br>';
+					s2 += '<i class="material-icons">delete</i><br>Del. row(s)';
+				s2 += '</td>';
+			s2 += '</tr>';
+			s2 += '<tr>';
+
+				s2 += '<td><br>';
+					s2 += '<span onClick="MyNoteExecLink(\'LinkStart\')" style="color:black;" id="MyNoteLinkStart">'
+						s2 += '<i class="material-icons">link</i><br>Start to Link';
+					s2 += '</span>';
+
+					s2 += '<span onClick="MyNoteExecLink(\'LinkEnd\')" style="color:black;display:none" id="MyNoteLinkEnd">'
+						s2 += '<i class="material-icons">low_priority</i><br>Link to Pali';
+					s2 += '</span>';
+
+					s2 += '<span onClick="MyNoteExecLink(\'LinkSave\')"  style="color:black;display:none;" id="MyNoteLinkSave">'
+						s2 += '<i class="material-icons">all_inclusive</i><br>Save the Link';
+					s2 += '</span>';
+				s2 += '</td>'; 
+
+				s2 += '<td><br>';
+					s2 += '<span onClick="MyNoteExecLink(\'LinkCancel\')"  style="color:black;display:none;" id="MyNoteLinkCancel">'
+						s2 += '<i class="material-icons">cancel</i><br>Cancel the Link';
+					s2 += '</span>';
+				s2 += '</td>';
+
+				s2 += '<td><br>';
+					s2 += '<span style="color:black;display:none;" id="MyNoteLinkId">';
+					s2 += 'My Note : <span id="LinkIdFrom" style="color:red;"></span><br>';
+					s2 += 'Link to Pali : <span id="LinkIdTo" style="color:red;"></span>';
+					s2 += '</span>';
+				s2 += '</td>';
+
+				s2 += '<td><br>';
+					s2 += '<span onClick="MyNoteExecLink(\'LinkOff\')" style="color:black;" id="MyNoteLinkOff">'
+					s2 += '<i class="material-icons">undo</i><br>Link Off';
+					s2 += '</span>';
+				s2 += '</td>';
+			s2 += '</tr>';
+		s2 += '</table>';
+		s2 += '<br>';
+		s2 += '<div id="MyNoteErrMessage" style="width:100%;background-color:yellow;color:black;font-size:12pt;"></div>';
+		$('#MyNotePanel').html(s2);
+
+
+		bgcolor = $("#main_table").css('background-color');
+		color = $("#main_table").css('color');
+    }
 
 	for (var idx in P_HTM) {
 		var Sr_run = '';
@@ -326,7 +487,7 @@ function  displayBook() {
 		var tags = P_Tag[idx].split('*');
 
 		s1 = '';
-		s2 = '';
+		right_viewHtml = '';
 
 		for (var idy in pali) {
 			if (idy == 999) {
@@ -340,9 +501,9 @@ function  displayBook() {
 					pali_left = replacei(pali_left, translated, sub=> '<span id="Sr' + idx + '" class="Sr_note">' + translated + "</span>");
 				}
 			}
-			s1 = s1 + pali_left + tags[idy];
+			s1 = s1 + pali_left + tags[idy]; 
 
-			if ((viewRightConfig != 'Space') && (viewRightConfig != 'MyNote') && (viewRightConfig != 'Suttacentral')) { 
+			if (is_Edit == false) {
 				var pali_right = toTranslateRight(pali[idy], viewRightConfig);
 				if (Sr_run == '1') {
 					for (const currentSr of Sr_ary) {
@@ -350,55 +511,95 @@ function  displayBook() {
 						pali_right = replacei(pali_right, translated, sub=> '<span id="Sr' + idx + '" class="Sr_note">' + translated + "</span>");
 					}
 				} 
-				s2 = s2 + pali_right + tags[idy];
+				right_viewHtml += pali_right + tags[idy];
 
 			}
 		} 
 
-		if (viewRightConfig == 'MyNote') {
-			var s21 = '';
+		if (is_Edit == true) {
+			var MyNoteUnformat = '';
 			if ((M_LOC[idx] != null) && (M_LOC[idx] != undefined) && (M_LOC[idx] !='')) {
-				s21 = s21 + M_LOC[idx].replace(/\n/g, '<br>');
-
-            	var jMyNoteData = {};
-				jMyNoteData.TrId = idx; 
-				jMyNoteData.val = M_LOC[idx];  
-	            MyNoteArray.push(jMyNoteData); 
+				MyNoteUnformat = M_LOC[idx];
 			}
-			s2 = '<p class="b1" id="m1_' + idx + '">' + s21 +'</p>';
+			MyNoteWithTags = MyNoteUnformat;
+			MyNoteWithTags = MyNoteSup(MyNoteWithTags);
 
-			var v1 = Math.max(25, parseInt(P_HTM[idx].length /0.9));
-			s2 = s2 + '<textarea id="notes' + idx +'" style="font-size:13.0pt;line-height:170%;width:99%;height:' + v1 + 'pt;color:#000000;background-color:#e0ffff;display:none;">' + s21 + '</textarea>'; 
+			right_viewHtml = '<p class="b1" id="m1_' + idx + '">' + AddSpace(MyNoteWithTags, '<br>') + '</p>';
 
-		} else {
-			if (viewRightConfig == 'Suttacentral') {
-				if ((M_SCT[idx] != null) && (M_SCT[idx] != undefined) && (M_SCT[idx] !='')) {
-					s2 = tags[0].replace('<p class="', '<p class="m1_') + M_SCT[idx].replace(/\n/g, '<br>'); + '</p>';
-            		var jSuttaCentralData = {};
-					jSuttaCentralData.TrId = idx; 
-					jSuttaCentralData.val = M_SCT[idx];  
-	           		SuttaCentralArray.push(jSuttaCentralData); 
-				}
+			right_viewHtml += '<span style="display:none;" id="MyNoteCheckbox'+ idx + '">';
+			right_viewHtml += '<input id="Notechk' + idx + '" type="checkbox" /></input>';
+			right_viewHtml += '<label for="Notechk' + idx + '" style="color:880000">Select</label>';
+			right_viewHtml += '</span>';
+
+			right_viewHtml += '<textarea id="note' + idx +'" style="font-size:16.0pt;line-height:170%;width:99%;height:33px;color:' + color + ';background-color:' + bgcolor + ';display:none;" onblur="MyNoteAdjust(' + idx + ')">' + AddSpace(MyNoteUnformat, '\n') + '</textarea><input type="hidden" id="noteH' + idx + '" value="0"><br><br>';
+			
+			//
+			var que_valid = 'none';
+			var que_value = '';
+
+			if (M_QUE[idx] != undefined) {
+				que_valid = 'inline';
+				que_value = AddSpace(M_QUE[idx].replace(/\<br\>/g, '\n'), '\n');
 			}
+
+			right_viewHtml += '<span id="MyNoteQueueDsp' + idx + '" style="display:' + que_valid + '">';
+				right_viewHtml += '<span onClick="DspQue(' + idx + ')" style="color:red;font-size:11pt;"><img src="images/b_comment.png">&nbsp;Queue&nbsp;</span>';				
+				right_viewHtml += '&nbsp;&nbsp;';
+
+				right_viewHtml += '<span id="MyNoteQueueMoveUp' +  idx + '" onClick="MyNoteQueueMoveUp(' + idx + ')" style="color:red;font-size:11pt;display:none;"><img src="images/uparrow2_m.png">&nbsp;Move up&nbsp;</span>';
+
+				right_viewHtml += "<br><span id='notex" + idx + "' style='font-size:10pt;backgroundColor:yellow;' onClick=\"this.innerHTML='';\"></span>";
+
+				right_viewHtml += '<textarea id="MyNoteQueue' + idx +'" style="font-size:10pt;line-height:125%;width:99%;height:100px;color:white;background-color:black;display:inline;">' + que_value + '</textarea>';
+			right_viewHtml  += '</span>'; 
 		}	
 
+		const inTable = inTableId ? `#${inTableId}` : '';
 
-		$('#p' +idx).html(s1);
+		$(`${inTable} #p${idx}`).html(s1);
 
 		//if (viewRightConfig != 'Space') {
-		$('#m' +idx).html(s2); 
-		//}	 
-			//document.getElementById('m' +idx).innerHTML = s2; 
+		$(`${inTable} #m${idx}`).html(right_viewHtml);
+
+		if (viewRightConfig == "MyNote") {
+			p1 = ('' + idx).substr(-1);
+			if ('02468'.indexOf(p1) != -1) {
+				$('#p' + idx).css('background-color', '#cccccc');
+				$('#m' + idx).css('background-color', '#cccccc');
+				$('#note' + idx).css('background-color', '#cccccc');
+			}
+		}
 	}
 
-/*
-	if (viewRightConfig == 'MyNote') {
-    	localStorage.setItem('MyNote' + html_no, JSON.stringify(MyNoteArray));
-	} 
-	if (viewRightConfig == 'Suttacentral') {
-    	localStorage.setItem('SuttaCentral' + html_no, JSON.stringify(SuttaCentralArray));
-	}	
-*/
+
+	if (is_Edit == true) {
+		if (P_HTM.length < M_LOC.length) {
+			var p_htm_length = P_HTM.length +1;
+			var m_loc_length = M_LOC.length;
+
+			var rows = M_LOC.length - P_HTM.length;
+			rows = "<tr><td class='r1' rowspan='" + rows + "'></td>";
+
+	        for (var idx = p_htm_length; idx <= m_loc_length; idx++) {
+				var s21 = '';
+				if ((M_LOC[idx] != null) && (M_LOC[idx] != undefined) && (M_LOC[idx] != '')) {
+					s21 = s21 + M_LOC[idx].replace(/\n/g, '<br>');
+				}
+				s2 = '<p class="b1">' + s21 +'</p>';
+
+				p1 = ('' + idx).substr(-1);
+				p1 = '02468'.indexOf(p1)
+				if ((p1 == -1) || (viewRightConfig == 'English')) {
+	            	rows = rows + "<td class='m1'>" + s2 + "</td></tr>";
+				} else {
+					rows = rows + "<td class='m1' style='background-color:#cccccc'>" + s2 + "</td></tr>";
+				}
+			}
+	        rows = rows + '</tr>';
+	        $('#main_table').html($('#main_table').html() + rows);
+		}
+	}
+ 
 
 	if (Sr_id != null) {
 		$('#Sr_Div').css('visibility', 'visible');
@@ -619,7 +820,6 @@ function GoToHistoryPosition(){
 	if (localStorage.getItem('history_pos') != null) {
 		if (localStorage.getItem('history_pos') != '') {
 			var pos = localStorage.getItem('history_pos');	// pos #MP
-
 			if (pos.indexOf('p') != -1) {	// for id
 				loc = pos.substring(1);
 				document.getElementById(loc).scrollIntoView();
@@ -644,16 +844,12 @@ function GoToHistoryPosition(){
 							break;
 						}
 					}
-
-
 				}
 			}
 			document.write = localStorage.setItem('history_pos', '');
 		}
 	}
-
 }
-
 */
 
 // Change Page4 TOC at none Roman Script
@@ -797,7 +993,7 @@ function doResizeBottom(ev){
 	var h = t + oDiv.offsetHeight;
 
 	tx = parseInt($('#main_div').css('top'));
-	h = Math.max(100, Math.min(h, window.innerHeight -tx -30));
+	h = Math.max(100, Math.min(h, window.innerHeight -tx));
 
 	omain_div.style.height=h+"px";
 	document.write = localStorage.setItem('main_height', h);
@@ -871,7 +1067,7 @@ function doDrag(ev){
 	tx = parseInt($('#main_div').css('top'));
 
 	w = Math.max(250, Math.min(w, window.innerWidth -lx -20));
-	h = Math.max(100, Math.min(h, window.innerHeight -tx -30));
+	h = Math.max(100, Math.min(h, window.innerHeight -tx));
 
 	omain_div.style.width=w+"px";
 	omain_div.style.height=h+"px";
@@ -967,4 +1163,3 @@ if (document.readyState ==='complete') {
 } else {
 	window.addEventListener("load", event => { setupHome() }, true);
 }
-

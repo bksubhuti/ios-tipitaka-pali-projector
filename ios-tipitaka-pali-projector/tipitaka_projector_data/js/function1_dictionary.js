@@ -1,4 +1,4 @@
-//global variable ;
+//global variable ; 
 var gbJustLookingBack = false;
 
 function paliGoBack() { 
@@ -65,6 +65,9 @@ function TmpDictionarySave(id) {
 function DictionaryGo() {
 	$('#lookup-results').empty();
 
+
+
+
 	SetDictionaryClassColor();
 
 
@@ -76,7 +79,7 @@ function DictionaryGo() {
 
 	jDictInfo.key = key;
 
- 
+
 	if (key == '') { return(''); } 
 	$('#DictionaryKey').val(toTranslate(key));
 
@@ -97,6 +100,15 @@ function DictionaryGo() {
 			DictionaryRet = DictionaryRet + '<a href="javascript:void(0);" id="G_' + key + '" onClick="OpenOnce(\'' + key + '\')" style="font-weight:900;" >' + toTranslate(key) + '&nbsp;</a>&nbsp;&nbsp;';
 			DictionaryRet = DictionaryRet + DoAnalysis(key) + '</div>';
 		}	
+	}
+
+	const peuIsSelected = $('#jpe8:checked').length > 0;
+	let inUpedKey = undefined;
+	if (peuIsSelected) {
+		inUpedKey = CheckInUped(key);
+		if (inUpedKey) {
+			DictionaryRet = inUpedKey + DictionaryRet;
+		}
 	}
 
 
@@ -166,6 +178,7 @@ function dictionaryMap() {
 		hpe5: pe5,
 		hpe6: pe6,
 		hpe7: pe7,
+		hpe8: pe8,
 		hpg1: pg1,
 		hpi1: pi1,
 		hpm1: pm1,
@@ -213,7 +226,7 @@ function WordListLookup(target) {
 	const uniqueKeys = [...new Set(cleanKeys)];
 	uniqueKeys.sort();
 
-	const usableKeys = uniqueKeys.slice(0, 20);
+	const usableKeys = uniqueKeys.slice(0, 500);
 	return usableKeys;
 };
 
