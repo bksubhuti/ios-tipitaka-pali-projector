@@ -1,3 +1,0 @@
-pws = {
-'ydttoyeva':'C1'
-};
